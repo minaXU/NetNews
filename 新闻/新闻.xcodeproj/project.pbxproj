@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB9A39231CABFE8600A51BB7 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB9A39221CABFE8600A51BB7 /* News.storyboard */; };
+		DB9A39261CABFE9B00A51BB7 /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9A39251CABFE9B00A51BB7 /* NewsTableViewController.m */; };
 		DBF9DE761CAACDA100BC42E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF9DE751CAACDA000BC42E3 /* main.m */; };
 		DBF9DE791CAACDA100BC42E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF9DE781CAACDA100BC42E3 /* AppDelegate.m */; };
-		DBF9DE7C1CAACDA100BC42E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF9DE7B1CAACDA100BC42E3 /* ViewController.m */; };
-		DBF9DE7F1CAACDA100BC42E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF9DE7D1CAACDA100BC42E3 /* Main.storyboard */; };
 		DBF9DE811CAACDA100BC42E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBF9DE801CAACDA100BC42E3 /* Assets.xcassets */; };
 		DBF9DE841CAACDA100BC42E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF9DE821CAACDA100BC42E3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB9A39221CABFE8600A51BB7 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
+		DB9A39241CABFE9B00A51BB7 /* NewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewController.h; sourceTree = "<group>"; };
+		DB9A39251CABFE9B00A51BB7 /* NewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewController.m; sourceTree = "<group>"; };
 		DBF9DE711CAACDA000BC42E3 /* 新闻.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "新闻.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBF9DE751CAACDA000BC42E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DBF9DE771CAACDA100BC42E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DBF9DE781CAACDA100BC42E3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DBF9DE7A1CAACDA100BC42E3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DBF9DE7B1CAACDA100BC42E3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		DBF9DE7E1CAACDA100BC42E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBF9DE801CAACDA100BC42E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBF9DE831CAACDA100BC42E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBF9DE851CAACDA100BC42E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +39,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB9A391F1CABFE1B00A51BB7 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				DB9A39201CABFE1B00A51BB7 /* News */,
+				DB9A39211CABFE1B00A51BB7 /* Tools */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		DB9A39201CABFE1B00A51BB7 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				DB9A39221CABFE8600A51BB7 /* News.storyboard */,
+				DB9A39241CABFE9B00A51BB7 /* NewsTableViewController.h */,
+				DB9A39251CABFE9B00A51BB7 /* NewsTableViewController.m */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		DB9A39211CABFE1B00A51BB7 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		DBF9DE681CAACDA000BC42E3 = {
 			isa = PBXGroup;
 			children = (
@@ -58,11 +84,9 @@
 		DBF9DE731CAACDA000BC42E3 /* 新闻 */ = {
 			isa = PBXGroup;
 			children = (
+				DB9A391F1CABFE1B00A51BB7 /* Class */,
 				DBF9DE771CAACDA100BC42E3 /* AppDelegate.h */,
 				DBF9DE781CAACDA100BC42E3 /* AppDelegate.m */,
-				DBF9DE7A1CAACDA100BC42E3 /* ViewController.h */,
-				DBF9DE7B1CAACDA100BC42E3 /* ViewController.m */,
-				DBF9DE7D1CAACDA100BC42E3 /* Main.storyboard */,
 				DBF9DE801CAACDA100BC42E3 /* Assets.xcassets */,
 				DBF9DE821CAACDA100BC42E3 /* LaunchScreen.storyboard */,
 				DBF9DE851CAACDA100BC42E3 /* Info.plist */,
@@ -138,8 +162,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBF9DE841CAACDA100BC42E3 /* LaunchScreen.storyboard in Resources */,
+				DB9A39231CABFE8600A51BB7 /* News.storyboard in Resources */,
 				DBF9DE811CAACDA100BC42E3 /* Assets.xcassets in Resources */,
-				DBF9DE7F1CAACDA100BC42E3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBF9DE7C1CAACDA100BC42E3 /* ViewController.m in Sources */,
+				DB9A39261CABFE9B00A51BB7 /* NewsTableViewController.m in Sources */,
 				DBF9DE791CAACDA100BC42E3 /* AppDelegate.m in Sources */,
 				DBF9DE761CAACDA100BC42E3 /* main.m in Sources */,
 			);
@@ -159,14 +183,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DBF9DE7D1CAACDA100BC42E3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DBF9DE7E1CAACDA100BC42E3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DBF9DE821CAACDA100BC42E3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -301,6 +317,7 @@
 				DBF9DE8A1CAACDA100BC42E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
