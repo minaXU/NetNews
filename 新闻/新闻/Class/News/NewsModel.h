@@ -29,6 +29,8 @@
 
 @property (nonatomic, copy) NSString *haha;
 
+@property (nonatomic,copy)NSString *xixi;
+
 + (instancetype)newsWithDict:(NSDictionary *)dict;
 
 + (void)loadNewsListWithStirng:(NSString *)string;
