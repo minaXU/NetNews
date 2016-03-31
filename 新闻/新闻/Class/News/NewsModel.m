@@ -42,8 +42,19 @@
     }];
 }
 
+const char * Kper = "kProperty";
 
 - (NSString *)description{
+    //如果属性列表已经存在,直接返回
+    NSString *pList = objc_getAssociatedObject(self.class, Kper);
+    NSLog(@"%@",pList);
+    if (pList.length > 0) {
+        
+        return pList;
+    }
+    
+    
+    
     //运行时的方式获取属性字典
     unsigned int count;
     objc_property_t * list = class_copyPropertyList([self class], &count);
@@ -54,12 +65,15 @@
         const char * name = property_getName(property);
         [array addObject:[NSString stringWithUTF8String:name]];
     }
-//    NSLog(@"%@",array.copy);
+    NSLog(@"%@",array.copy);
     //model转字典
     //释放list
     free(list);
+    
     NSDictionary *dict = [self dictionaryWithValuesForKeys:array.copy];
-    return [NSString stringWithFormat:@"%@",dict];
+    NSString *string = [NSString stringWithFormat:@"%@",dict];
+    objc_setAssociatedObject(self.class, Kper, string, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    return objc_getAssociatedObject(self.class, Kper);
    
     
 }
