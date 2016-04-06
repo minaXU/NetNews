@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		348A4BE32B076467A67714D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A95D3DB0124E867C39D2E6E5 /* libPods.a */; };
+		DB218F591CB4C8EA005B5D63 /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB218F581CB4C8EA005B5D63 /* HomeCollectionViewCell.m */; };
+		DB218F5C1CB4C9FA005B5D63 /* ChannelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB218F5B1CB4C9FA005B5D63 /* ChannelModel.m */; };
 		DB3337A51CACD55A00A5F8C5 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3337A41CACD55A00A5F8C5 /* NewsModel.m */; };
 		DB3D85801CB3D8140059BEA6 /* topic_news.json in Resources */ = {isa = PBXBuildFile; fileRef = DB3D857F1CB3D8140059BEA6 /* topic_news.json */; };
 		DB3D85831CB3DCC10059BEA6 /* InnerViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3D85821CB3DCC10059BEA6 /* InnerViewViewController.m */; };
@@ -29,6 +31,10 @@
 /* Begin PBXFileReference section */
 		186524549A0F20B7C7B2AC9F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A95D3DB0124E867C39D2E6E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB218F571CB4C8EA005B5D63 /* HomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewCell.h; sourceTree = "<group>"; };
+		DB218F581CB4C8EA005B5D63 /* HomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewCell.m; sourceTree = "<group>"; };
+		DB218F5A1CB4C9FA005B5D63 /* ChannelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelModel.h; sourceTree = "<group>"; };
+		DB218F5B1CB4C9FA005B5D63 /* ChannelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelModel.m; sourceTree = "<group>"; };
 		DB3337A31CACD55A00A5F8C5 /* NewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
 		DB3337A41CACD55A00A5F8C5 /* NewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		DB3D857F1CB3D8140059BEA6 /* topic_news.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = topic_news.json; sourceTree = "<group>"; };
@@ -96,6 +102,8 @@
 				DBF355931CAD1EA200948EE0 /* NewsTableViewCell.m */,
 				DB3D85891CB3EA5D0059BEA6 /* InnerCollectionViewCell.h */,
 				DB3D858A1CB3EA5D0059BEA6 /* InnerCollectionViewCell.m */,
+				DB218F571CB4C8EA005B5D63 /* HomeCollectionViewCell.h */,
+				DB218F581CB4C8EA005B5D63 /* HomeCollectionViewCell.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -107,6 +115,8 @@
 				DB3337A41CACD55A00A5F8C5 /* NewsModel.m */,
 				DB3D85861CB3DF3E0059BEA6 /* InnerModel.h */,
 				DB3D85871CB3DF3E0059BEA6 /* InnerModel.m */,
+				DB218F5A1CB4C9FA005B5D63 /* ChannelModel.h */,
+				DB218F5B1CB4C9FA005B5D63 /* ChannelModel.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -354,8 +364,10 @@
 				DB3D85911CB3F8840059BEA6 /* HomeViewController.m in Sources */,
 				DBF9DE791CAACDA100BC42E3 /* AppDelegate.m in Sources */,
 				DB3D858B1CB3EA5D0059BEA6 /* InnerCollectionViewCell.m in Sources */,
+				DB218F5C1CB4C9FA005B5D63 /* ChannelModel.m in Sources */,
 				DBF9DE761CAACDA100BC42E3 /* main.m in Sources */,
 				DBF355941CAD1EA200948EE0 /* NewsTableViewCell.m in Sources */,
+				DB218F591CB4C8EA005B5D63 /* HomeCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [NewsModel loadNewsListWithStirng:@"T1348647853363/0-20.html" withBlock:^(NSArray *array) {
+    NSString *string = [NSString stringWithFormat:@"%@/0-20.html",self.newsUrl];
+    [NewsModel loadNewsListWithStirng:string withBlock:^(NSArray *array) {
         self.newsList = array;
         [self.tableView reloadData];
     }];
@@ -35,7 +35,7 @@
     // 1. cell中要有向下的约束，能够撑开整个cell
     // 2. 所有的约束不能有负值
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-
+    
     
 }
 

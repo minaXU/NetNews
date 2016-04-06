@@ -10,4 +10,6 @@
 
 @interface NewsTableViewController : UITableViewController
 
+@property (nonatomic,copy)NSString *newsUrl;
+
 @end

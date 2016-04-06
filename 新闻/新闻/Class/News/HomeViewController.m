@@ -8,34 +8,162 @@
 
 #import "HomeViewController.h"
 
-#import "NewsTableViewController.h"
-@interface HomeViewController ()
-@property (weak, nonatomic) IBOutlet UIView *collectionView_colle;
+#import "ChannelModel.h"
+
+#import "HomeCollectionViewCell.h"
+
+@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView_colle;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowlayout_folw;
+
+
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView_chaneel;
 
-@property (nonatomic,strong)NewsTableViewController *NewsController;
+
+@property (nonatomic,strong)NSArray *channelList;
+
+
 @end
 
 @implementation HomeViewController
 
+- (NSArray *)channelList{
+    if (!_channelList) {
+        _channelList = [ChannelModel channelList];
+    }
+    return _channelList;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"News" bundle:nil];
-    self.NewsController = [sb instantiateInitialViewController];
-
+//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"News" bundle:nil];
+//    self.NewsController = [sb instantiateInitialViewController];
+//
+//    
+//    [self.view addSubview:self.NewsController.view];
     
-    [self.view addSubview:self.NewsController.view];
+    self.collectionView_colle.dataSource = self;
+    self.collectionView_colle.delegate = self;
+    
+    self.collectionView_colle.pagingEnabled = YES;
+    
+    [self showChannel];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.scrollView_chaneel.showsHorizontalScrollIndicator = NO;
+    
+    
+    
 }
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    self.NewsController.view.frame = self.collectionView_colle.frame;
+    //设置flowLayout
+    self.flowlayout_folw.itemSize = self.collectionView_colle.frame.size;
+    
+    self.flowlayout_folw.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.flowlayout_folw.minimumLineSpacing = 0;
+    
+   
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - datasource
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.channelList.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    ChannelModel *model = self.channelList[indexPath.row];
+    
+    HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"channel" forIndexPath:indexPath];
+    cell.model = model;
+    return cell;
+}
+
+#pragma mark - collection delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSArray *array = self.collectionView_colle.indexPathsForVisibleItems;
+    for (NSIndexPath *index in array) {
+        UILabel *label = [self.scrollView_chaneel viewWithTag:index.row + 1];
+        
+        
+            
+            //计算比例
+            CGFloat scale = ABS(self.collectionView_colle.contentOffset.x/self.collectionView_colle.frame.size.width - label.tag + 1) ;
+            label.transform = CGAffineTransformMakeScale(1.3 - scale*0.3, 1.3 - scale*0.3);
+        label.textColor = [UIColor colorWithRed:1-scale green:0 blue:0 alpha:1];
+        
+    }
+//        if (scale < 0) {
+//            label.transform = CGAffineTransformMakeScale(1 - scale*0.25, 1 - scale*0.25);
+//        }else{
+//            label.transform = CGAffineTransformMakeScale(1 - scale*0.2, 1 - scale*0.2);
+//        }
+        
+//    }
+
+}
+
+//- (void)scrollViewDidDecelerating:(UIScrollView *)scrollView{
+////    NSArray *array = self.collectionView_colle.indexPathsForVisibleItems;
+////    for (NSIndexPath *index in array) {
+////       UILabel *label = [self.scrollView_chaneel viewWithTag:index.row];
+////        label.textColor = [UIColor redColor];
+////    }
+//}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    //拿到当前新闻页
+     NSIndexPath *path = [self.collectionView_colle.indexPathsForVisibleItems firstObject];
+    //计算偏移量
+    UILabel *label = [self.scrollView_chaneel viewWithTag:path.row + 1];
+    CGFloat offx = label.frame.origin.x - self.view.frame.size.width/2 + label.frame.size.width/2;
+    if (offx > 0 && offx < self.scrollView_chaneel.contentSize.width -self.scrollView_chaneel.frame.size.width) {
+       
+       
+        [self.scrollView_chaneel setContentOffset:CGPointMake(offx, 0) animated:YES];
+        
+    }
+    
+}
+
+- (void)showChannel{
+    CGFloat x = 0;
+    
+    for (int i = 0;  i < self.channelList.count; i ++) {
+        
+        ChannelModel *model = self.channelList[i];
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(x, 0, 0, 0)];
+        label.text = model.tname;
+        label.font = [UIFont systemFontOfSize:20];
+      
+        [label sizeToFit];
+        x += label.frame.size.width;
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont systemFontOfSize:14];
+        label.tag = i + 1;
+        if (i == 0) {
+            label.transform = CGAffineTransformMakeScale(1.3, 1.3);
+            label.textColor = [UIColor redColor];
+        }
+        [self.scrollView_chaneel addSubview:label];
+    }
+    self.scrollView_chaneel.contentSize = CGSizeMake(x, 0);
+    NSLog(@"x = %f",self.scrollView_chaneel.contentSize.width);
+    
+    [self scrollViewDidScroll:self.scrollView_chaneel];
 }
 
 /*
