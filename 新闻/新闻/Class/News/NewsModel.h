@@ -21,18 +21,21 @@
 /**
  *  跟贴数量
  */
-@property (nonatomic, assign) int replyCount;
+@property (nonatomic, assign) NSNumber *replyCount;
 /**
  *  配图地址
  */
 @property (nonatomic, copy) NSString *imgsrc;
 
-@property (nonatomic, copy) NSString *haha;
+@property (nonatomic,strong)NSArray *imgextra;
 
-@property (nonatomic,copy)NSString *xixi;
+@property (nonatomic,assign,getter=isBig)BOOL imgType;
+
 
 + (instancetype)newsWithDict:(NSDictionary *)dict;
 
-+ (void)loadNewsListWithStirng:(NSString *)string;
++ (void)loadNewsListWithStirng:(NSString *)string withBlock:(void(^)(NSArray *array)) finshed;
+
+- (NSString *)cellStyle;
 
 @end

@@ -10,7 +10,11 @@
 
 #import "NewsModel.h"
 
+#import "NewsTableViewCell.h"
+
 @interface NewsTableViewController ()
+
+@property (nonatomic,strong)NSArray *newsList;
 
 @end
 
@@ -19,7 +23,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [NewsModel loadNewsListWithStirng:@"T1348647853363/0-20.html"];
+    [NewsModel loadNewsListWithStirng:@"T1348647853363/0-20.html" withBlock:^(NSArray *array) {
+        self.newsList = array;
+        [self.tableView reloadData];
+    }];
+    //设置行高
+    // 设置预估行高
+    self.tableView.estimatedRowHeight = 80;
+    // 设置行高-自动计算行高
+    // 要求：
+    // 1. cell中要有向下的约束，能够撑开整个cell
+    // 2. 所有的约束不能有负值
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,25 +46,23 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    return self.newsList.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    NewsModel *model = self.newsList[indexPath.row];
+    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[model cellStyle] forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.model = model;
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

@@ -23,10 +23,11 @@
     return model;
 }
 
-+ (void)loadNewsListWithStirng:(NSString *)string{
++ (void)loadNewsListWithStirng:(NSString *)string  withBlock:(void (^)(NSArray *))finshed{
     [[NetworkTools shareNetwoekTools] GET:string parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * responseObject) {
         //拿到返回的数组
         NSArray *array = responseObject[responseObject.keyEnumerator.nextObject];
+        
         //遍历数组,抓换模型
         //可变数组保存数据
         NSMutableArray *mutable = [NSMutableArray arrayWithCapacity:20];
@@ -34,7 +35,7 @@
             [mutable addObject:[NewsModel newsWithDict:dict]];
         }
         //返回给主线程
-        NSLog(@"%@",mutable);
+        finshed(mutable.copy);
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -76,6 +77,21 @@ const char * Kper = "kProperty";
     return objc_getAssociatedObject(self.class, Kper);
    
     
+}
+
+- (NSString *)cellStyle{
+    NSString *string ;
+    if (self.imgextra.count == 2) {
+        string = @"extra";
+    }else
+    {
+        if(self.isBig){
+            string = @"big";
+        }
+        string = @"reuse";
+    }
+
+    return string;
 }
 
 //忽略未定义的字典数据
