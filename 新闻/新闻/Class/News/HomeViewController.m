@@ -131,16 +131,22 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     //拿到当前新闻页
-     NSIndexPath *path = [self.collectionView_colle.indexPathsForVisibleItems firstObject];
+//     NSIndexPath *path = [self.collectionView_colle.indexPathsForVisibleItems firstObject];
+//    NSLog(@"count = %ld",self.collectionView_colle.indexPathsForVisibleItems.count);
+//    if (self.collectionView_colle.indexPathsForVisibleItems.count == 2) {
+//        return;
+//    }
+   NSInteger tag = scrollView.contentOffset.x / scrollView.bounds.size.width;
     //计算偏移量
-    UILabel *label = [self.scrollView_chaneel viewWithTag:path.row + 1];
+    UILabel *label = [self.scrollView_chaneel viewWithTag:tag + 1];
     CGFloat offx = label.frame.origin.x - self.view.frame.size.width/2 + label.frame.size.width/2;
-    if (offx > 0 && offx < self.scrollView_chaneel.contentSize.width -self.scrollView_chaneel.frame.size.width) {
-       
-       
+    if ( offx < 0) {offx = 0;}
+    if (offx > self.scrollView_chaneel.contentSize.width -self.scrollView_chaneel.frame.size.width) {
+        offx = self.scrollView_chaneel.contentSize.width -self.scrollView_chaneel.frame.size.width;
+    }
         [self.scrollView_chaneel setContentOffset:CGPointMake(offx, 0) animated:YES];
         
-    }
+    
     
 }
 
@@ -184,13 +190,17 @@
     label.textColor = [UIColor redColor];
 
     
+    
+    
     CGFloat offx = label.frame.origin.x - self.view.frame.size.width/2 + label.frame.size.width/2;
-    if (offx > 0 && offx < self.scrollView_chaneel.contentSize.width -self.scrollView_chaneel.frame.size.width) {
-        
+    if ( offx < 0) {offx = 0;}
+    if (offx > self.scrollView_chaneel.contentSize.width -self.scrollView_chaneel.frame.size.width) {
+        offx = self.scrollView_chaneel.contentSize.width -self.scrollView_chaneel.frame.size.width;
+    }
         
         [self.scrollView_chaneel setContentOffset:CGPointMake(offx, 0) animated:YES];
         
-    }
+   
 
 //    self.scrollView_chaneel setContentOffset:CGPointMake(<#CGFloat x#>, <#CGFloat y#>)
 }

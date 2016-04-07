@@ -47,10 +47,7 @@ static int num1 = 0;
     // Dispose of any resources that can be recreated.
 }
 
--(void)dealloc{
-    
-    NSLog(@"num1 = %d",num1);
-}
+
 
 #pragma mark - Table view data source
 
