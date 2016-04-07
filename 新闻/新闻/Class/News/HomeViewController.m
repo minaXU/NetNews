@@ -95,6 +95,8 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     NSArray *array = self.collectionView_colle.indexPathsForVisibleItems;
+    
+    
     for (NSIndexPath *index in array) {
         UILabel *label = [self.scrollView_chaneel viewWithTag:index.row + 1];
         
@@ -102,6 +104,9 @@
             
             //计算比例
             CGFloat scale = ABS(self.collectionView_colle.contentOffset.x/self.collectionView_colle.frame.size.width - label.tag + 1) ;
+        if (scale>1) {
+            scale = 1;
+        }
             label.transform = CGAffineTransformMakeScale(1.3 - scale*0.3, 1.3 - scale*0.3);
         label.textColor = [UIColor colorWithRed:1-scale green:0 blue:0 alpha:1];
         
@@ -158,14 +163,37 @@
             label.transform = CGAffineTransformMakeScale(1.3, 1.3);
             label.textColor = [UIColor redColor];
         }
+        //添加手势
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapLabel:)];
+        [label addGestureRecognizer:tap];
+        label.userInteractionEnabled = YES;
+        
         [self.scrollView_chaneel addSubview:label];
     }
     self.scrollView_chaneel.contentSize = CGSizeMake(x, 0);
-    NSLog(@"x = %f",self.scrollView_chaneel.contentSize.width);
+    
     
     [self scrollViewDidScroll:self.scrollView_chaneel];
 }
 
+
+-(void)tapLabel:(UITapGestureRecognizer *)tap{
+    UILabel *label = (UILabel *)tap.view;
+    [self.collectionView_colle scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:label.tag - 1 inSection:0] atScrollPosition:0 animated:NO];
+    label.transform = CGAffineTransformMakeScale(1.3, 1.3);
+    label.textColor = [UIColor redColor];
+
+    
+    CGFloat offx = label.frame.origin.x - self.view.frame.size.width/2 + label.frame.size.width/2;
+    if (offx > 0 && offx < self.scrollView_chaneel.contentSize.width -self.scrollView_chaneel.frame.size.width) {
+        
+        
+        [self.scrollView_chaneel setContentOffset:CGPointMake(offx, 0) animated:YES];
+        
+    }
+
+//    self.scrollView_chaneel setContentOffset:CGPointMake(<#CGFloat x#>, <#CGFloat y#>)
+}
 /*
 #pragma mark - Navigation
 

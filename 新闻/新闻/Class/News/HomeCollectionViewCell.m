@@ -26,7 +26,7 @@
     
     self.NewsController.newsUrl = model.tid;
     self.NewsController.view.frame  = self.contentView.frame;
-    
+    [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self.contentView addSubview:self.NewsController.view];
     
     

@@ -40,7 +40,7 @@
         //遍历加载图片
         int index = 0;
         for (UIImageView * imgView  in _imgVeiws_extra) {
-            NSLog(@"%@",model.imgextra[index][@"imgsrc"]);
+            
             [imgView setImageWithURL:[NSURL URLWithString:model.imgextra[index][@"imgsrc"]] ];
             index ++;
         }

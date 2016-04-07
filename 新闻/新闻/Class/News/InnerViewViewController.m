@@ -24,9 +24,12 @@
 
 @end
 
+static int num2 = 0;
+
 @implementation InnerViewViewController
 
 - (void)viewDidLoad {
+    num2 ++;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -90,7 +93,7 @@
     index = index % self.innerList.count;
     //滚动到中间section对应item的位置
     [self.collectionView_img scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:1] atScrollPosition:0 animated:NO];
-    //    NSLog(@"%ld",index);
+    
     
     //修改pagecontroll
     self.pageControl_pages.currentPage = index;
@@ -100,7 +103,10 @@
     self.label_title.text = model.title;
 }
 
+-(void)dealloc{
+    num2 --;
 
+}
 
 
 @end

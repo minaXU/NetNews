@@ -20,8 +20,11 @@
 
 @implementation NewsTableViewController
 
+static int num1 = 0;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    num1++;
     NSString *string = [NSString stringWithFormat:@"%@/0-20.html",self.newsUrl];
     [NewsModel loadNewsListWithStirng:string withBlock:^(NSArray *array) {
         self.newsList = array;
@@ -29,7 +32,7 @@
     }];
     //设置行高
     // 设置预估行高
-    self.tableView.estimatedRowHeight = 80;
+    self.tableView.estimatedRowHeight = 120;
     // 设置行高-自动计算行高
     // 要求：
     // 1. cell中要有向下的约束，能够撑开整个cell
@@ -42,6 +45,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc{
+    
+    NSLog(@"num1 = %d",num1);
 }
 
 #pragma mark - Table view data source
