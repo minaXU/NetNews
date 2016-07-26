@@ -24,6 +24,9 @@
     NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 *1024 * 1024 diskPath:nil];
     [NSURLCache setSharedURLCache:cache];
     
+    
+    NSLog(@"添加了一行代码");
+    
     // 2. 设置网络指示器 - 后续的 AFN 网络请求都会显示小菊花
     // 提问：SDWebImage 做网络请求，不会显示指示器！
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
