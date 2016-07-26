@@ -78,18 +78,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-        586D784E1D47811600739381 /* 你傻 啊 */ = {
+		586D784E1D47811600739381 /* 你傻 啊 */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "你傻 啊";
-			sourceTree = "<group>";
-		};
-		586D784F1D47815A00739381 /* 我也添加了文件 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "我也添加了文件";
 			sourceTree = "<group>";
 		};
 		6C8041FA1C650A3C3A3B7BCE /* Pods */ = {
@@ -172,8 +165,7 @@
 		DB9A39211CABFE1B00A51BB7 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-                586D784E1D47811600739381 /* 你傻 啊 */,
-				586D784F1D47815A00739381 /* 我也添加了文件 */,
+				586D784E1D47811600739381 /* 你傻 啊 */,
 				DBF3558E1CACDFFB00948EE0 /* Log */,
 				DB9A39281CAC1D3700A51BB7 /* NetworkTools.h */,
 				DB9A39291CAC1D3700A51BB7 /* NetworkTools.m */,
